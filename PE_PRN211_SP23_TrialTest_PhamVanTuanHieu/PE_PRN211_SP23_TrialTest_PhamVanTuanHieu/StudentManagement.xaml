@@ -32,9 +32,9 @@
             </Grid>
         </GroupBox>
         <Label x:Name="lblHeader" Content="Student Management" HorizontalAlignment="Left" Margin="31,25,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
-        <Button x:Name="btnCreate" Content="Create" HorizontalAlignment="Left" Height="33" Margin="642,195,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.533,-0.225"/>
-        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Height="33" Margin="642,250,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.533,-0.225"/>
-        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Height="33" Margin="642,305,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.533,-0.225"/>
+        <Button x:Name="btnCreate" Content="Create" HorizontalAlignment="Left" Height="33" Margin="642,195,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.533,-0.225" Click="btnCreate_Click"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Height="33" Margin="642,250,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.533,-0.225" Click="btnUpdate_Click"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Height="33" Margin="642,305,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.533,-0.225" Click="btnDelete_Click"/>
         <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Height="33" Margin="642,358,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.533,-0.225" Click="btnExit_Click"/>
 
     </Grid>

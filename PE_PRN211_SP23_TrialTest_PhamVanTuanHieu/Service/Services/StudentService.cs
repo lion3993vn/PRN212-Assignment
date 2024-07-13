@@ -1,4 +1,5 @@
-﻿using Repository.Repositories;
+﻿using Repository.Entities;
+using Repository.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,18 @@ namespace Service.Services
                 GroupId = x.GroupId,
                 GroupName = x.Group.GroupName,
             }).ToList();
+        }
+
+        public void addStudent(Student student)
+        {
+            _studentRepository = new();
+            _studentRepository.addNewStudent(student);
+        }
+
+        public Student getStudentById(int id)
+        {
+            _studentRepository = new();
+            return _studentRepository.getStudentById(id);
         }
     }
 }

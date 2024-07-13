@@ -24,5 +24,25 @@ namespace Repository.Repositories
             var list = _context.Students.Where(x => x.DateOfBirth.Value.Year >= fromYear && x.DateOfBirth.Value.Year <= toYear).Include(x => x.Group).ToList();
             return list;
         }
+
+        public void addNewStudent(Student student)
+        {
+            _context = new();
+            _context.Students.Add(student);
+            _context.SaveChanges();
+        }
+
+        public Student getStudentById(int id)
+        {
+            _context = new();
+            return _context.Students.FirstOrDefault(x => x.Id == id);
+        }
+
+        public void deleteStudent(Student student)
+        {
+            _context = new();
+            _context.Remove(student);
+            _context.SaveChanges();
+        }
     }
 }

@@ -17,5 +17,11 @@ namespace Repository.Repositories
             var group = _context.StudentGroups.Where(x => x.Id == id).FirstOrDefault();
             return group.GroupName;
         }
+
+        public List<StudentGroup> getAllGroup()
+        {
+            _context = new();
+            return _context.StudentGroups.ToList();
+        }
     }
 }

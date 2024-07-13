@@ -6,20 +6,20 @@
         xmlns:local="clr-namespace:PE_PRN211_SP23_TrialTest_PhamVanTuanHieu"
         mc:Ignorable="d"
         Title="StudentManagement" Height="450" Width="800">
-    <Grid>
+    <Grid x:Name="DetailForm" Loaded="DetailForm_Loaded">
         <Label x:Name="lblHeader" Content="ADD | UPDATE" HorizontalAlignment="Left" Margin="49,35,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="SemiBold"/>
         <Label Content="Id" HorizontalAlignment="Left" Margin="49,125,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label Content="Email" HorizontalAlignment="Left" Margin="49,180,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label Content="Fullname" HorizontalAlignment="Left" Margin="49,229,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label Content="Date Of Birth" HorizontalAlignment="Left" Margin="49,287,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label Content="Group: " HorizontalAlignment="Left" Margin="49,341,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <TextBox x:Name="txtId" HorizontalAlignment="Left" Margin="247,134,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="152" Padding="5,5,5,5" FontSize="15"/>
+        <TextBox x:Name="txtId" HorizontalAlignment="Left" Margin="247,134,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="152" Padding="5,5,5,5" FontSize="15" IsEnabled="False"/>
         <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="247,185,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="152" Padding="5,5,5,5" FontSize="15"/>
         <TextBox x:Name="txtFullname" HorizontalAlignment="Left" Margin="247,234,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="152" Padding="5,5,5,5" FontSize="15"/>
-        <DatePicker x:Name="dtpBirthday" HorizontalAlignment="Left" Margin="247,287,0,0" VerticalAlignment="Top" Width="152" Padding="5,5,5,5" FontSize="15"/>
-        <ComboBox x:Name="cbGroup" HorizontalAlignment="Left" Margin="247,348,0,0" VerticalAlignment="Top" Width="152" Padding="5,5,5,5" FontSize="15" />
-        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="572,134,0,0" VerticalAlignment="Top" Padding="10,5,10,5" Width="89"/>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="572,185,0,0" VerticalAlignment="Top" Padding="10,5,10,5" Width="89"/>
+        <DatePicker x:Name="dtpBirthday" HorizontalAlignment="Left" Margin="247,287,0,0" VerticalAlignment="Top" Width="152" Padding="5,5,5,5" FontSize="15" Text="asdasda"/>
+        <ComboBox x:Name="cbGroup" HorizontalAlignment="Left" Margin="247,348,0,0" VerticalAlignment="Top" Width="152" Padding="5,5,5,5" FontSize="15" Loaded="cbGroup_Loaded" />
+        <Button x:Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="572,134,0,0" VerticalAlignment="Top" Padding="10,5,10,5" Width="89" Click="btnSave_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="572,185,0,0" VerticalAlignment="Top" Padding="10,5,10,5" Width="89" Click="btnCancel_Click"/>
 
 
     </Grid>

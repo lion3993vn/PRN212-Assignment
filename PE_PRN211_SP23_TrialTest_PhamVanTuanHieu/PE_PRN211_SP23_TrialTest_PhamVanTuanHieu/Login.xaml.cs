@@ -1,4 +1,4 @@
-﻿using Service.Services;
+﻿using Repository.Repositories;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,7 +17,7 @@ namespace PE_PRN211_SP23_TrialTest_PhamVanTuanHieu
     /// </summary>
     public partial class MainWindow : Window
     {
-        private UserRoleService _userRoleService;
+        private UserRoleRepository _userRoleRepository;
         public MainWindow()
         {
             InitializeComponent();
@@ -28,8 +28,8 @@ namespace PE_PRN211_SP23_TrialTest_PhamVanTuanHieu
             String username = txtUsername.Text;
             String password = txtPassword.Text;
 
-            _userRoleService = new UserRoleService();
-            var user = _userRoleService.login(username, password);
+            _userRoleRepository = new();
+            var user = _userRoleRepository.Login(username, password);
             if (user != null) 
             {
                 if(user.UserRole1 != 2)

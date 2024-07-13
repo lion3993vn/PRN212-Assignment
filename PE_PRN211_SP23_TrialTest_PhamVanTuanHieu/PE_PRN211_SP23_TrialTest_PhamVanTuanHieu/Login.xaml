@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PE_PRN211_SP23_TrialTest_PhamVanTuanHieu"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="800">
+        Title="Login" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid x:Name="LoginForm">
         <Label x:Name="lblHeader" Content="Student Management" HorizontalAlignment="Center" Margin="0,46,0,0" VerticalAlignment="Top" FontSize="25"/>
         <Label x:Name="lblUsername" Content="Username :" HorizontalAlignment="Left" Margin="264,173,0,0" VerticalAlignment="Top" FontSize="20"/>
         <Label x:Name="lblPassword" Content="Password :" HorizontalAlignment="Left" Margin="264,228,0,0" VerticalAlignment="Top" FontSize="20" Width="104"/>
-        <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Margin="400,177,0,0" TextWrapping="Wrap" Text="Username" VerticalAlignment="Top" Width="120" Padding="5,5,5,5"/>
-        <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="400,237,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Top" Width="120" Padding="5,5,5,5"/>
+        <TextBox x:Name="txtUsername" HorizontalAlignment="Left" Margin="400,177,0,0" TextWrapping="Wrap" Text="staff" VerticalAlignment="Top" Width="120" Padding="5,5,5,5"/>
+        <TextBox x:Name="txtPassword" HorizontalAlignment="Left" Margin="400,237,0,0" TextWrapping="Wrap" Text="staff@123" VerticalAlignment="Top" Width="120" Padding="5,5,5,5"/>
         <Button x:Name="btnLogin" Content="Login" HorizontalAlignment="Left" Height="30" Margin="264,311,0,0" VerticalAlignment="Top" Width="93" Click="btnLogin_Click"/>
         <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Height="30" Margin="428,311,0,0" VerticalAlignment="Top" Width="92" RenderTransformOrigin="1.791,0.733" Click="btnClear_Click"/>
 
