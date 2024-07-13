@@ -1,0 +1,41 @@
+﻿<Window x:Class="PE_PRN211_SP23_TrialTest_PhamVanTuanHieu.StudentManagement"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PE_PRN211_SP23_TrialTest_PhamVanTuanHieu"
+        mc:Ignorable="d"
+        Title="Student Management" Height="450" Width="800">
+    <Grid x:Name="StudentManagementForm" Loaded="StudentManagementForm_Loaded">
+        <DataGrid x:Name="dgvStudent" HorizontalAlignment="Left" Height="196" Margin="31,195,0,0" VerticalAlignment="Top" Width="558" AutoGenerateColumns="True" IsReadOnly="True" SelectionChanged="dgvStudent_SelectionChanged"/>
+
+        <GroupBox HorizontalAlignment="Left" Height="84" Header="Search BirthDay" Margin="31,73,0,0" VerticalAlignment="Top" Width="558">
+            <Grid Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Content="From Year:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="5"/>
+                <TextBox x:Name="txtFromYear" Grid.Row="0" Grid.Column="1" Width="100" Margin="5"/>
+
+                <Label Content="To Year:" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Margin="5"/>
+                <TextBox x:Name="txtToYear" Grid.Row="0" Grid.Column="3" Width="100" Margin="10,6,168,6"/>
+
+                <Button x:Name="btnSearch" Content="Search" Grid.Column="3" HorizontalAlignment="Left" Margin="168,8,0,8" Width="91" Click="btnSearch_Click"/>
+            </Grid>
+        </GroupBox>
+        <Label x:Name="lblHeader" Content="Student Management" HorizontalAlignment="Left" Margin="31,25,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <Button x:Name="btnCreate" Content="Create" HorizontalAlignment="Left" Height="33" Margin="642,195,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.533,-0.225"/>
+        <Button x:Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Height="33" Margin="642,250,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.533,-0.225"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Height="33" Margin="642,305,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.533,-0.225"/>
+        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Left" Height="33" Margin="642,358,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="0.533,-0.225" Click="btnExit_Click"/>
+
+    </Grid>
+</Window>
