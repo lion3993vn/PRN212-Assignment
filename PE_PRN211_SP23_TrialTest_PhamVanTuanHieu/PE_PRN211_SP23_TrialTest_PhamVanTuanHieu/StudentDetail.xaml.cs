@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PE_PRN211_SP23_TrialTest_PhamVanTuanHieu
 {
@@ -23,7 +24,7 @@ namespace PE_PRN211_SP23_TrialTest_PhamVanTuanHieu
     /// </summary>
     public partial class StudentDetail : Window
     {
-        public StudentModel _selected = null;
+        public StudentModel selected = null;
         private StudentRepository _studentRepository;
         private StudentGroupRepository _studentGroupRepository;
 
@@ -66,40 +67,54 @@ namespace PE_PRN211_SP23_TrialTest_PhamVanTuanHieu
             return true;
         }
 
+        private bool Validate(string name, string email, DateTime date)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                MessageBox.Show("Email is required", "Error", MessageBoxButton.OK);
+                return false;
+            }
+            else if (!email.Contains("@"))
+            {
+                MessageBox.Show("Email must have @", "Error", MessageBoxButton.OK);
+                return false;
+            }
+            if (name.Length < 5 || name.Length > 40)
+            {
+                MessageBox.Show("Length of Student fullname is in the range of 5 – 40 characters", "Error", MessageBoxButton.OK);
+                return false;
+            }
+            else if (!checkCapital(name))
+            {
+                MessageBox.Show("Each word in name must begin with the capital letter and special characters are not allowed", "Error", MessageBoxButton.OK);
+                return false;
+            }
+            DateTime valid = new DateTime(2024, 1, 1);
+            if (date == null)
+            {
+                MessageBox.Show("DateOfBirth is required", "Error", MessageBoxButton.OK);
+                return false;
+            }
+            else if (date >= valid)
+            {
+                MessageBox.Show("DateOfBirth must be before 1/1/2005", "Error", MessageBoxButton.OK);
+                return false;
+            }
+            return true;
+        }
+
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (_selected == null)
+                _studentRepository = new();
+                if (selected == null)
                 {
-                    _studentRepository = new();
                     string name = txtFullname.Text;
                     string email = txtEmail.Text;
-                    if(string.IsNullOrEmpty(email))
-                    {
-                        MessageBox.Show("Email is required", "Error", MessageBoxButton.OK);
-                        return;
-                    }
-                    if (name.Length < 5 || name.Length > 40)
-                    {
-                        MessageBox.Show("Length of Student fullname is in the range of 5 – 40 characters", "Error", MessageBoxButton.OK);
-                        return;
-                    }
-                    else if (!checkCapital(name))
-                    {
-                        MessageBox.Show("Each word in name must begin with the capital letter and special characters are not allowed", "Error", MessageBoxButton.OK);
-                        return;
-                    }
                     DateTime date = dtpBirthday.SelectedDate.Value;
-                    DateTime valid = new DateTime(2024, 1, 1);
-                    if(date == null)
+                    if(!Validate(name, email, date))
                     {
-                        MessageBox.Show("DateOfBirth is required", "Error", MessageBoxButton.OK);
-                        return;
-                    }
-                    else if (date >= valid)
-                    {
-                        MessageBox.Show("DateOfBirth must be before 1/1/2005", "Error", MessageBoxButton.OK);
                         return;
                     }
                     int groupid = ((StudentGroup)cbGroup.SelectedItem).Id;
@@ -116,7 +131,27 @@ namespace PE_PRN211_SP23_TrialTest_PhamVanTuanHieu
                 }
                 else
                 {
-                    
+                    string name = txtFullname.Text;
+                    string email = txtEmail.Text;
+                    DateTime date = dtpBirthday.SelectedDate.Value;
+                    int groupid = ((StudentGroup)cbGroup.SelectedItem).Id;
+                    if (!Validate(name, email, date))
+                    {
+                        return;
+                    }
+                    else
+                    {
+                        Student student = new Student()
+                        {
+                            Id = selected.Id,
+                            GroupId = groupid,
+                            DateOfBirth = date,
+                            Email = email,
+                            FullName = name,
+                        };
+                        _studentRepository.updateStudent(student);
+                        this.Close();
+                    }
                 }
             }
             catch (Exception ex)
@@ -131,24 +166,24 @@ namespace PE_PRN211_SP23_TrialTest_PhamVanTuanHieu
             cbGroup.ItemsSource = _studentGroupRepository.getAllGroup();
             cbGroup.DisplayMemberPath = "GroupName";
             cbGroup.SelectedValuePath = "Id";
-            if (_selected == null)
+            if (selected == null)
             {
                 cbGroup.SelectedIndex = 0;
             }
             else
             {
-                cbGroup.SelectedValue = (int)_selected.GroupId;
+                cbGroup.SelectedValue = (int)selected.GroupId;
             }
         }
 
         private void DetailForm_Loaded(object sender, RoutedEventArgs e)
         {
-            if (_selected != null)
+            if (selected != null)
             {
-                txtId.Text = _selected.Id.ToString();
-                txtEmail.Text = _selected.Email;
-                txtFullname.Text = _selected.FullName;
-                dtpBirthday.SelectedDate = _selected.DateOfBirth;
+                txtId.Text = selected.Id.ToString();
+                txtEmail.Text = selected.Email;
+                txtFullname.Text = selected.FullName;
+                dtpBirthday.SelectedDate = selected.DateOfBirth;
             }
         }
     }

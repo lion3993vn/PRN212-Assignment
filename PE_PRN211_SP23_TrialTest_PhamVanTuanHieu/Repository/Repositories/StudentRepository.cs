@@ -44,5 +44,12 @@ namespace Repository.Repositories
             _context.Remove(student);
             _context.SaveChanges();
         }
+
+        public void updateStudent(Student student)
+        {
+            _context = new();
+            _context.Students.Update(student);
+            _context.SaveChanges();
+        }
     }
 }

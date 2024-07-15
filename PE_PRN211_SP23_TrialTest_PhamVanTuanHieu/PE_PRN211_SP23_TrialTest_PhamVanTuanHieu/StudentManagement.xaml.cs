@@ -25,7 +25,7 @@ namespace PE_PRN211_SP23_TrialTest_PhamVanTuanHieu
     {
         private StudentRepository _studentRepository;
         private StudentGroupRepository _studentGroupRepository;
-        private StudentModel _selected = null;
+        private StudentModel selected = null;
         public StudentManagement()
         {
             InitializeComponent();
@@ -43,7 +43,7 @@ namespace PE_PRN211_SP23_TrialTest_PhamVanTuanHieu
                 DateOfBirth = x.DateOfBirth,
                 FullName = x.FullName,
                 GroupId = x.GroupId,
-                GroupName = _studentGroupRepository.getGroupNameById((int)x.GroupId),
+                GroupName = x.Group.GroupName,
             }).ToList();
             dgvStudent.ItemsSource = model;
         }
@@ -95,25 +95,25 @@ namespace PE_PRN211_SP23_TrialTest_PhamVanTuanHieu
         {
             if (dgvStudent.SelectedItem != null)
             {
-                _selected = (StudentModel)dgvStudent.SelectedItem;
+                selected = (StudentModel)dgvStudent.SelectedItem;
             }
             else
             {
-                _selected = null;
+                selected = null;
             }
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
             StudentDetail form = new StudentDetail();
-            form._selected = null;
+            form.selected = null;
             form.ShowDialog();
             loadGrid();
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (_selected == null)
+            if (selected == null)
             {
                 MessageBox.Show("Please choose the student you want to delete", "Error", MessageBoxButton.OK);
             }
@@ -125,14 +125,14 @@ namespace PE_PRN211_SP23_TrialTest_PhamVanTuanHieu
                     _studentRepository = new();
                     _studentRepository.deleteStudent(new Student()
                     {
-                        Id = _selected.Id,
-                        Email = _selected.Email,
-                        DateOfBirth = _selected.DateOfBirth,
-                        FullName = _selected.FullName,
-                        GroupId = _selected.GroupId,
+                        Id = selected.Id,
+                        Email = selected.Email,
+                        DateOfBirth = selected.DateOfBirth,
+                        FullName = selected.FullName,
+                        GroupId = selected.GroupId,
                     });
 
-                    _selected = null;
+                    selected = null;
                     loadGrid();
                 }
             }
@@ -140,14 +140,14 @@ namespace PE_PRN211_SP23_TrialTest_PhamVanTuanHieu
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            if(_selected == null)
+            if(selected == null)
             {
                 MessageBox.Show("Please choose an item to update", "Error", MessageBoxButton.OK);
             }
             else
             {
                 StudentDetail form = new StudentDetail();
-                form._selected = _selected;
+                form.selected = selected;
                 form.ShowDialog();
                 loadGrid();
             }
