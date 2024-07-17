@@ -82,7 +82,16 @@ namespace PE_PRN211_SP23_TrialTest_PhamVanTuanHieu
                 return;
             }
             var list = _studentRepository.searchStudent(fromYear, toYear);
-            dgvStudent.ItemsSource = list;
+            var model = list.Select(x => new StudentModel()
+            {
+                Id = x.Id,
+                Email = x.Email,
+                DateOfBirth = x.DateOfBirth,
+                FullName = x.FullName,
+                GroupId = x.GroupId,
+                GroupName = x.Group.GroupName,
+            }).ToList();
+            dgvStudent.ItemsSource = model;
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
