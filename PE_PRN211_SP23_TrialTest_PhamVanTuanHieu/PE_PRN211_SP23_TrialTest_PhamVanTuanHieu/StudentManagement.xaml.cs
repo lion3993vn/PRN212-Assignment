@@ -78,9 +78,8 @@ namespace PE_PRN211_SP23_TrialTest_PhamVanTuanHieu
 
             if (fromYear > toYear)
             {
-                int temp = fromYear;
-                fromYear = toYear;
-                toYear = temp;
+                MessageBox.Show("From-year cannot bigger than To-year", "Error", MessageBoxButton.OK);
+                return;
             }
             var list = _studentRepository.searchStudent(fromYear, toYear);
             dgvStudent.ItemsSource = list;
